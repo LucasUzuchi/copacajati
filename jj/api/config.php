@@ -4,6 +4,8 @@
 define('MP_ACCESS_TOKEN', 'APP_USR-0000000000000000-000000-00000000000000000000000000000000-000000000'); // <--- COLOQUE SEU TOKEN AQUI
 
 // URL do seu site (necessário para o Webhook e retornos)
-// Exemplo: http://seusite.com.br ou o IP do seu servidor
-define('BASE_URL', 'http://localhost/jj'); 
+// No Vercel, o ideal é configurar a variável APP_URL ou deixar detectar automaticamente
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+$domain = $_SERVER['HTTP_HOST'] ?? 'localhost/jj';
+define('BASE_URL', getenv('APP_URL') ?: "$protocol://$domain"); 
 ?>
